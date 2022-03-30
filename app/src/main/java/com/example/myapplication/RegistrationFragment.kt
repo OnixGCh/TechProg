@@ -1,40 +1,40 @@
 package com.example.myapplication
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.TextPaint
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.text.set
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 
 
-class RegistrationActivity : AppCompatActivity(R.layout.activity_registration) {
+class RegistrationFragment : Fragment(R.layout.fragment_registration) {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        val toolbar = view.findViewById<Toolbar>(R.id.toolbar)
+        (activity as AppCompatActivity).setSupportActionBar(toolbar)
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         toolbar.setNavigationOnClickListener {
-
+            findNavController().navigateUp()
         }
 
-        val textViewAgreement = findViewById<TextView>(R.id.agreement)
-
+        val textViewAgreement = view.findViewById<TextView>(R.id.agreement)
         val str = SpannableString("Нажимая на кнопку, вы соглашаетесь с политикой конфиденциальности и обработки персональных данных, а также принимаете пользовательское соглашение")
 
         val clickableSpan1: ClickableSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
-                Toast.makeText(this@RegistrationActivity, "Политика конфиденциальности", Toast.LENGTH_LONG).show()
+                Toast.makeText(view.context, "Политика конфиденциальности", Toast.LENGTH_LONG).show()
             }
 
             override fun updateDrawState(ds: TextPaint) {
@@ -45,7 +45,7 @@ class RegistrationActivity : AppCompatActivity(R.layout.activity_registration) {
 
         val clickableSpan2: ClickableSpan = object : ClickableSpan() {
             override fun onClick(widget: View) {
-                Toast.makeText(this@RegistrationActivity, "Пользовательское соглашение", Toast.LENGTH_LONG).show()
+                Toast.makeText(view.context, "Пользовательское соглашение", Toast.LENGTH_LONG).show()
             }
 
             override fun updateDrawState(ds: TextPaint) {
@@ -59,6 +59,5 @@ class RegistrationActivity : AppCompatActivity(R.layout.activity_registration) {
 
         textViewAgreement.text = str
         textViewAgreement.movementMethod = LinkMovementMethod.getInstance()
-
     }
 }

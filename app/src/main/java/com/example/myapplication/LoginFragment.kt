@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
@@ -19,6 +20,10 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         toolbar.setNavigationOnClickListener {
             findNavController().navigateUp()
+        }
+
+        view.findViewById<Button>(R.id.loginButton).setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_activityFragment)
         }
     }
 }

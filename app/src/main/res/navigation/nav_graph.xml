@@ -7,7 +7,13 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.myapplication.LoginFragment"
-        android:label="LoginActivity" />
+        android:label="LoginActivity" >
+        <action
+            android:id="@+id/action_loginFragment_to_activityFragment"
+            app:destination="@id/activityFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"/>
+    </fragment>
     <fragment
         android:id="@+id/registrationFragment"
         android:name="com.example.myapplication.RegistrationFragment"
@@ -23,4 +29,8 @@
             android:id="@+id/action_welcomeActivity_to_loginActivity"
             app:destination="@id/loginFragment"/>
     </fragment>
+    <fragment
+        android:id="@+id/activityFragment"
+        android:name="com.example.myapplication.ActivityFragment"
+        android:label="ActivityFragment" />
 </navigation>

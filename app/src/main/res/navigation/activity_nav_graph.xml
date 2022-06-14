@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_nav_graph"
+    app:startDestination="@id/tabsFragment">
+
+    <fragment
+        android:id="@+id/tabsFragment"
+        android:name="com.example.myapplication.TabsFragment"
+        android:label="TabsFragment" >
+        <action
+            android:id="@+id/action_tabsFragment_to_myDetalizationFragment"
+            app:destination="@id/myDetalizationFragment" />
+        <action
+            android:id="@+id/action_tabsFragment_to_usersDetalizationFragment"
+            app:destination="@id/usersDetalizationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.myapplication.ProfileFragment"
+        android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/myDetalizationFragment"
+        android:name="com.example.myapplication.Detalizations.MyDetalizationFragment"
+        android:label="MyDetalizationFragment" />
+    <fragment
+        android:id="@+id/usersDetalizationFragment"
+        android:name="com.example.myapplication.Detalizations.UsersDetalizationFragment"
+        android:label="UsersDetalizationFragment" />
+</navigation>

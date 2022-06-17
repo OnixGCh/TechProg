@@ -31,13 +31,14 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:hint="Логин">
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/loginInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textNoSuggestions"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/nickname"
+                    android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -45,6 +46,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:hint="Имя или никнейм">
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/nameInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textNoSuggestions"/>
@@ -55,18 +57,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:layout_below="@+id/nickname"
+                    android:layout_below="@+id/name"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:hint="Пароль"
                     app:passwordToggleEnabled="true">
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/passwordInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/password_repeat"
+                    android:id="@+id/passwordRepeat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -75,6 +78,7 @@
                     android:hint="Повторите пароль"
                     app:passwordToggleEnabled="true">
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/passwordRepeatInput"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"/>
@@ -94,24 +98,22 @@
 
 
             <RadioGroup
+                android:id="@+id/genderGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp">
 
                 <RadioButton
-                    android:id="@+id/male"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Мужской"/>
 
                 <RadioButton
-                    android:id="@+id/female"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Женский"/>
 
                 <RadioButton
-                    android:id="@+id/other"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Другое"/>
@@ -119,9 +121,10 @@
             </RadioGroup>
 
             <Button
+                android:id="@+id/registrationButton"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:layout_below="@+id/female"
+                android:layout_below="@+id/genderGroup"
                 android:layout_margin="16dp"
                 android:text="Зарегистрироваться"
                 android:layout_gravity="center"/>

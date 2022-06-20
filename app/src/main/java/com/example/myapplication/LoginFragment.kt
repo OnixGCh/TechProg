@@ -43,13 +43,10 @@ class LoginFragment : Fragment(R.layout.fragment_login), LoginView {
         view.findViewById<Button>(R.id.loginButton).setOnClickListener {
             presenter.onLoginClicked(
                 view.findViewById<TextInputEditText>(R.id.loginInput).text.toString(),
-                view.findViewById<TextInputEditText>(R.id.passwordInput).text.toString()
+                view.findViewById<TextInputEditText>(R.id.passwordInput).text.toString(),
+                sharedPrefs
             )
         }
-    }
-
-    override fun saveToken(token: String) {
-        sharedPrefs.edit().putString("Token", token).apply()
     }
 
     override fun onDestroyView() {

@@ -1,5 +1,7 @@
 package com.example.myapplication.MVP
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.Navigation.findNavController
@@ -28,8 +30,10 @@ class RegistrationPresenter {
     fun onRegistrationClicked(
         login: String,
         password: String,
+        passwordRepeat: String,
         name: String,
-        gender: Int
+        gender: Int,
+        sharedPrefs: SharedPreferences
     ){
         if(login.isBlank()){
             view?.showLoginError()
@@ -51,9 +55,13 @@ class RegistrationPresenter {
             return
         }
 
+        if(password != passwordRepeat){
+            view?.showToast("Пароли не совпадают")
+        }
+
         loginService.register(login, password, name, gender, object : LoginService.LoginCallback{
             override fun onSuccess(result: RegisterDTO) {
-                view?.saveToken(result.token)
+                sharedPrefs.edit()?.putString("Token", result.token)?.apply()
                 navController?.navigate(R.id.action_registrationFragment_to_activityFragment)
             }
 

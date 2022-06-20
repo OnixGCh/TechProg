@@ -1,5 +1,7 @@
 package com.example.myapplication.MVP
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
@@ -26,7 +28,7 @@ class LoginPresenter {
         this.view = null
     }
 
-    fun onLoginClicked(login: String, password: String){
+    fun onLoginClicked(login: String, password: String, sharedPrefs: SharedPreferences){
         if(login.isBlank()){
             view?.showLoginError()
             return
@@ -39,7 +41,7 @@ class LoginPresenter {
 
         loginService.login(login, password, object : LoginService.LoginCallback{
             override fun onSuccess(result: RegisterDTO) {
-                view?.saveToken(result.token)
+                sharedPrefs.edit()?.putString("Token", result.token)?.apply()
                 navController?.navigate(R.id.action_loginFragment_to_activityFragment)
             }
 

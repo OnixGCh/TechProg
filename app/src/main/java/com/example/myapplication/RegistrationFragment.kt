@@ -49,16 +49,14 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration), Registrat
         }
 
         view.findViewById<Button>(R.id.registrationButton).setOnClickListener {
-            if(view.findViewById<TextInputEditText>(R.id.passwordInput).text.toString() == view.findViewById<TextInputEditText>(R.id.passwordRepeatInput).text.toString()) {
-                presenter.onRegistrationClicked(
+            presenter.onRegistrationClicked(
                 view.findViewById<TextInputEditText>(R.id.loginInput).text.toString(),
                 view.findViewById<TextInputEditText>(R.id.passwordInput).text.toString(),
+                view.findViewById<TextInputEditText>(R.id.passwordRepeatInput).text.toString(),
                 view.findViewById<TextInputEditText>(R.id.nameInput).text.toString(),
-                view.findViewById<RadioGroup>(R.id.genderGroup).checkedRadioButtonId - 1
+                view.findViewById<RadioGroup>(R.id.genderGroup).checkedRadioButtonId - 1,
+                sharedPrefs
                 )
-            }
-            else
-                showToast("Пароли не совпадают")
         }
 
         val textViewAgreement = view.findViewById<TextView>(R.id.agreement)
@@ -91,10 +89,6 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration), Registrat
 
         textViewAgreement.text = str
         textViewAgreement.movementMethod = LinkMovementMethod.getInstance()
-    }
-
-    override fun saveToken(token: String) {
-        sharedPrefs.edit().putString("Token", token).apply()
     }
 
     override fun onDestroyView() {

@@ -1,5 +1,6 @@
 package com.example.myapplication.MVP
 
+import android.content.SharedPreferences
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
@@ -22,26 +23,29 @@ class ProfilePresenter {
         this.view = null
     }
 
-    fun onLogoutClicked(){
-        loginService.logout("Bearer " + view?.getToken().toString(), object : LoginService.LogoutCallback{
-            override fun onSuccess() {
-            }
+    fun onLogoutClicked(token: String){
+        loginService.logout("Bearer $token", object : LoginService.LogoutCallback{
+            override fun onSuccess() { }
 
-            override fun onError() {
-            }
+            override fun onError() { }
         })
     }
 
-    fun onViewCreated(){
-        loginService.profile("Bearer " + view?.getToken().toString(), object : LoginService.ProfileCallback{
+    fun onViewCreated(token: String){
+        loginService.profile("Bearer $token", object : LoginService.ProfileCallback{
             override fun onSuccess(result: UserDTO) {
-                view?.getData(result.name, result.login, view?.getToken().toString())
+                view?.getData(result.name, result.login, token)
             }
 
             override fun onError(error: Throwable) {
                 view?.showToast(error.toString())
             }
         })
+    }
+
+    fun deleteToken(sharedPrefs: SharedPreferences, navController: NavController){
+        sharedPrefs.edit().remove("Token").apply()
+        navController.navigate(R.id.action_activityFragment_to_welcomeFragment)
     }
 
 }

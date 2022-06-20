@@ -8,6 +8,4 @@ interface LoginView {
 
     fun showToast(message: String)
 
-    fun saveToken(token: String)
-
 }

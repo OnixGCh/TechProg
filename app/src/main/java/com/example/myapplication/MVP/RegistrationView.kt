@@ -10,6 +10,4 @@ interface RegistrationView {
 
     fun showToast(message: String)
 
-    fun saveToken(token: String)
-
 }

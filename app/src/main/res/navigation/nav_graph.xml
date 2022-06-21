@@ -17,7 +17,13 @@
     <fragment
         android:id="@+id/registrationFragment"
         android:name="com.example.myapplication.RegistrationFragment"
-        android:label="RegistrationActivity" />
+        android:label="RegistrationActivity" >
+        <action
+            android:id="@+id/action_registrationFragment_to_activityFragment"
+            app:destination="@id/activityFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"/>
+    </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.example.myapplication.WelcomeFragment"
@@ -28,9 +34,20 @@
         <action
             android:id="@+id/action_welcomeActivity_to_loginActivity"
             app:destination="@id/loginFragment"/>
+        <action
+            android:id="@+id/action_welcomeFragment_to_activityFragment"
+            app:destination="@id/activityFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/activityFragment"
         android:name="com.example.myapplication.ActivityFragment"
-        android:label="ActivityFragment" />
+        android:label="ActivityFragment" >
+        <action
+            android:id="@+id/action_activityFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"/>
+    </fragment>
 </navigation>

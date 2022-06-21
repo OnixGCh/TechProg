@@ -4,4 +4,59 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Имя"
+        android:textSize="26dp"
+        android:layout_margin="8dp"/>
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textSize="30dp"
+        android:layout_margin="8dp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Логин"
+        android:textSize="26dp"
+        android:layout_margin="8dp"/>
+
+    <TextView
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textSize="30dp"
+        android:layout_margin="8dp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Токен"
+        android:textSize="26dp"
+        android:layout_margin="8dp"/>
+
+    <TextView
+        android:id="@+id/token"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Token"
+        android:textSize="30dp"
+        android:layout_margin="8dp"
+        android:textColor="@color/black"/>
+
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Выйти"
+        android:layout_margin="8dp"/>
+
 </LinearLayout>
